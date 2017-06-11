@@ -5,7 +5,7 @@ implementation in CUDA
 */
 // Funtion to be integrated
 
-#include<iostream>
+#include<stdio.h>
 
 double func(double x) {
 	return x*x;
