@@ -3,23 +3,27 @@ Performs numerical integration via Simpson's rule.
 Demonstrates a serial version of the algorithm to be contrasted with a parallel
 implementation in CUDA
 */
-// Funtion to be integrated
 
 #include<stdio.h>
-
+#include <time.h>
 double func(double x) {
 	return x*x;
 }
 int main() {
+	clock_t t1, t2;
+
  	double a, b; // Endpoints
 	int N; // Number of subintervals
 	int i; // counter
 	double sum; // Holds sum
 	double width; // width of subintervals
 	double result; // final result
+
+	t1 = clock(); // initial time
+
 	a = 0.0;
-	b = 1.0;
-	N = 100;
+	b = 100.0;
+	N = 1000000;
 	width = (b - a) / N;
 	sum = func(a) + func(b);
 
@@ -33,5 +37,9 @@ int main() {
 	result = (sum * width) / 3.0;
 
 	printf("The value is %f\n", result);
+
+	t2 = clock();
+	float difference = ((float)t2 - (float)t1);
+	printf("Running time is %f\n", difference);
 
 }
