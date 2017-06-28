@@ -6,8 +6,10 @@ implementation in CUDA
 
 #include<stdio.h>
 #include <time.h>
+#define _USE_MATH_DEFINES // Access to PI
+#include<math.h>
 double func(double x) {
-	return x*x;
+	return cos(x);
 }
 int main() {
 	clock_t t1, t2;
@@ -22,7 +24,7 @@ int main() {
 	t1 = clock(); // initial time
 
 	a = 0.0;
-	b = 100.0;
+	b = 2*M_PI;
 	N = 1000000;
 	width = (b - a) / N;
 	sum = func(a) + func(b);

@@ -1,5 +1,6 @@
 /*
 Parallel implementation of Simpson's rule in CUDA
+(annoyed grunt)
 */
 
 #include<stdio.h>
@@ -12,7 +13,7 @@ float myFunc(float x)
 // kernel Function
 __global__
 void kernelFunc(float a, float width, int N, float *valOut) {
-	int i = threadIdx.x;
+	int i = threadIdx.x + 1; // Begin at zero so 
 	float x = a + ((float)i * width);
 	if (i < N) {
 		if (i % 2 == 1) {
@@ -50,15 +51,6 @@ int main() {
 	for (i = 0; i < N; i++) {
 		sum += hostArray[i];
 	}
-	/*
-	for (i = 1; i < N; i++) {
-		if (i % 2 == 1) {
-			sum += 4 * func(a + (i * width));
-		} else {
-			sum += 2 * func(a + (i * width));
-		}
-	}
-	*/
 
 	result = (sum * width) / 3.0;
 

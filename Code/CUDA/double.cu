@@ -36,14 +36,11 @@ int main(void)
 	//int deviceInArray;
 	// Allocate device memory.
 	cudaMalloc(&deviceArray, N*sizeof(int));
-	//cudaMalloc(&deviceArray, N*sizeof(int));
 
 	cudaMemcpy(deviceArray, hostArray, N*sizeof(int), cudaMemcpyHostToDevice);
 	// Launch kernel!!!
 	// <<<N/TPB blocks, TPB threads per block>>>
 	doubleKernel<<<N/TPB, TPB>>>(deviceArray);
-
-	//cudaDeviceSynchronize();
 
 	// Copy results from device to host.
 	cudaMemcpy(hostOut, deviceArray, N*sizeof(int), cudaMemcpyDeviceToHost);
@@ -51,7 +48,7 @@ int main(void)
 	// Print results
 	for (i = 0; i < N; i++)
 	{
-		printf("Hello from thread %d!\n", hostOut[i]);
+		printf("2 * %d = %d\n", i, hostOut[i]);
 	}
 	// Free memory for device array
 	cudaFree(deviceArray);

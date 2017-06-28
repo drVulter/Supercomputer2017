@@ -1,0 +1,19 @@
+Jetson Cluster
+	http://techtinkering.com/2009/12/02/setting-up-a-beowulf-cluster-using-open-mpi-on-linux/
+	Set-up
+		initial set up - http://elinux.org/Jetson_TK1
+		Essential tools
+			sudo apt-get install build-essential
+		CUDA
+			6.0
+			http://elinux.org/Jetson/Installing_CUDA
+		Open MPI 1.8.1
+			https://likymice.wordpress.com/2015/03/13/install-open-mpi-in-ubuntu-14-04-13-10/
+
+		SSH
+			Install openssh-server on each compute node
+			Install open-ssh client on master node
+		NFS
+PI Cluster
+	http://www.instructables.com/id/How-to-Make-a-Raspberry-Pi-SuperComputer/
+	MPI
