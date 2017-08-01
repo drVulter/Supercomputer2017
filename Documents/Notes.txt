@@ -1,6 +1,5 @@
 Jetson Cluster
-	http://techtinkering.com/2009/12/02/setting-up-a-beowulf-cluster-using-open-mpi-on-linux/
-	Set-up
+	http://techtinkering.com/2009/12/02/setting-up-a-beowulf-cluster-using-open-mpi-on-linux/Set-up
 		initial set up - http://elinux.org/Jetson_TK1
 		Essential tools
 			sudo apt-get install build-essential
@@ -9,11 +8,24 @@ Jetson Cluster
 			http://elinux.org/Jetson/Installing_CUDA
 		Open MPI 1.8.1
 			https://likymice.wordpress.com/2015/03/13/install-open-mpi-in-ubuntu-14-04-13-10/
+			./configure --with-cuda
+			https://www.open-mpi.org/faq/?category=buildcuda
+			http://lsi.ugr.es/jmantas/pdp/ayuda/datos/instalaciones/Install_OpenMPI_en.pdf
 
 		SSH
 			Install openssh-server on each compute node
 			Install open-ssh client on master node
 		NFS
+	MAKE SURE EACH NODE HAS THIS IN ~/.bashrc???????????
+		export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib"
+	EXAMPLE COMPILATION/EXECUTION
+		mpicc -c pi_main.c -o pi_main.o
+		nvcc -c pi_kernel.cu -o pi_kernel.o
+		mpicc pi_main.o pi_kernel.o -lcudart -L/usr/local/cuda/lib/ -o pi
+		mpiexec -np 2 --hostfile ~/.mpi_hostfile ./pi
+
 PI Cluster
 	http://www.instructables.com/id/How-to-Make-a-Raspberry-Pi-SuperComputer/
+	Assign static IP addresses
+	change host file (/etc/hosts)
 	MPI

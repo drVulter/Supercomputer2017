@@ -17,7 +17,6 @@ __global__ void doubleKernel(int *d_out)
 	// Update "out" array
 	d_out[i] = 2 * d_out[i];
 }
-
 int main(void)
 {
 	int i; // counter

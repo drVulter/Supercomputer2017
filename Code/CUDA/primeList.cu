@@ -66,7 +66,7 @@ int main(void)
 	for (i = 0; i < N; i++)
 	{
 		if (hostOut[i])
-			printf("i is prime\n", i+1);
+			printf("%d is prime\n", i+1);
 	}
 
 	// Clean up
