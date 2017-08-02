@@ -1,0 +1,12 @@
+/Users/quinngardnerstratton/Desktop/Supercomputer2017/Data/MPIPIRawDataSingle.txt
+3.141591 863.634939
+
+/Users/quinngardnerstratton/Desktop/Supercomputer2017/Data/MPIPIRawDataFour.txt
+3.141591 216.370966
+
+/Users/quinngardnerstratton/Desktop/Supercomputer2017/Data/MPIPIRawDataEight.txt
+3.141595 183.080884
+
+/Users/quinngardnerstratton/Desktop/Supercomputer2017/Data/MPIPIRawDataSixteen.txt
+3.141590 98.079423
+

@@ -7,14 +7,16 @@
 //#include "kernel.h"
 #define MASTER 0 // master process
 #define N 4294967296 // 2^32
-//#define N 65536
-//#define N 2147483648
+//#define N 2097152
+//#define N 1048576 *2*2*2*2*2*2*2
+//#define N 268435456 * 4
 int main(int argc, char *argv[]) {
 	int i; // Counter
 	//int trials;
 
 	// Timing variables
 	double start, end;
+
 
 
 	printf("Before MPI\n");
@@ -36,10 +38,10 @@ int main(int argc, char *argv[]) {
 	double local_pi; // pi approximation for each device
 	double pi_sum; // used by MASTER
 	double pi_approx; // final result
-	long local_N; // Number of iterations for THIS process
+	long long local_N; // Number of iterations for THIS process
 	//printf("Process %d before GPU call\n", rank);
 	local_N = N / world_size;
-	printf("local N process %d is: %ld\n", rank, local_N);
+	printf("local N process %d is: %lld\n", rank, local_N);
 	// Calculate the side length of the GPU grid
 	//int local_grid_dim = 256;
 	//long long local_grid_dim = (long long)sqrt((long double)local_N);
@@ -78,6 +80,7 @@ int main(int argc, char *argv[]) {
 			exit(1);
 		}
 		double time_used = end - start;
+		printf("%f %f\n", pi_approx, time_used);
 		fprintf(f, "%f %f\n", pi_approx, time_used);
 		//printf("Elapsed time: %d\n", diff);
 		//printf("Approximate value of PI is %f\n", pi_approx);

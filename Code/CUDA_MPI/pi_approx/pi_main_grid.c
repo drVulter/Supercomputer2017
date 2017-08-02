@@ -7,7 +7,7 @@
 //#include "kernel.h"
 #define MASTER 0 // master process
 //#define N 4294967296 // 2^32
-#define N 262144
+#define N 2621
 //#define N 2147483648
 int main(int argc, char *argv[]) {
 	int i; // Counter
