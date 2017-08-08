@@ -2,6 +2,8 @@
 	Quinn Stratton
 	Program to approximate the value of PI
 	using Monte Carlo method
+	Based on algorithm found in Lawrence Livermore National
+	Laboratory MPI programming tutorial
 */
 #include <stdio.h>
 #include <mpi.h>
@@ -10,21 +12,6 @@
 #define N 4294967296 // Number of total iterations 2^32
 #define MASTER 0
 
-// Subroutine for determining whether a randomly generated point is in the circle
-int circle(float x, float y) {
-
-	x = (float)rand() / (float)RAND_MAX; // generate random number 0 - 1
-	y = (float)rand() / (float)RAND_MAX;
-	if (((x*x) + (y*y)) <= 1.0)
-		return 1;
-	else
-		return 0;
-
-}
-
-// Actual PI approximating work
-// Makes use of circle() subroutine to determine whether a randomly generated point is
-// 	in the circle.
 
 int main(int argc, char** argv)
 {
@@ -46,9 +33,8 @@ int main(int argc, char** argv)
 	long long i; // counter
 
 
-	// initialize environment
+	// Initialize environment
 	MPI_Init(NULL, NULL);
-
 	// Find out rank and size
 	int world_rank;
 	MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
@@ -72,7 +58,9 @@ int main(int argc, char** argv)
 	}
 
 	local_pi = 4.0 * (long double)local_count / (long double)local_N;
-	rc = MPI_Reduce(&local_pi, &pi_sum, 1, MPI_DOUBLE, MPI_SUM, MASTER, MPI_COMM_WORLD);
+
+	rc = MPI_Reduce(&local_pi, &pi_sum, 1, MPI_DOUBLE,
+		MPI_SUM, MASTER, MPI_COMM_WORLD);
 
 	// End the stopwatch
 	MPI_Barrier(MPI_COMM_WORLD);
@@ -83,7 +71,8 @@ int main(int argc, char** argv)
 
 	// MASTER process calculates value of pi using the global_count
 	if (world_rank == MASTER) {
-		pi_approx = pi_sum / (float)world_size; // Calculate pi value
+		// Calculate pi value
+		pi_approx = pi_sum / (float)world_size;
 
 		double time_used = end - start;
 		printf("Apporoximate value of PI is %f\n", pi_approx);

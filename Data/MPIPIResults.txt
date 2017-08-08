@@ -10,3 +10,12 @@
 /Users/quinngardnerstratton/Desktop/Supercomputer2017/Data/MPIPIRawDataSixteen.txt
 3.141590 98.079423
 
+/Users/quinngardnerstratton/Desktop/Supercomputer2017/Data/CUDAData/MPICUDAPIResultsOne.txt
+3.140967 1432.309503
+
+/Users/quinngardnerstratton/Desktop/Supercomputer2017/Data/CUDAData/MPICUDAPIResultsTwo.txt
+3.143237 716.625042
+
+/Users/quinngardnerstratton/Desktop/Supercomputer2017/Data/CUDAData/MPICUDAPIResultsFour.txt
+3.141773 372.948434
+
